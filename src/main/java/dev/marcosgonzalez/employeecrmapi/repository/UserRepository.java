@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
+
     @Query(collation = "{'locale':  'en', 'strength':  2}")
     Optional<User> findByUsername(String username);
 
