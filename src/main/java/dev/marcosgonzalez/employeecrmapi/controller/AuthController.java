@@ -1,8 +1,11 @@
 package dev.marcosgonzalez.employeecrmapi.controller;
 
 import dev.marcosgonzalez.employeecrmapi.dto.AuthResponse;
+import dev.marcosgonzalez.employeecrmapi.dto.LoginBody;
 import dev.marcosgonzalez.employeecrmapi.dto.SignupBody;
 import dev.marcosgonzalez.employeecrmapi.service.AuthService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +26,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String login() {
-        return "POST login";
+    public AuthResponse login(@RequestBody @Valid LoginBody body, HttpServletRequest req, HttpServletResponse res) {
+        return authService.login(body, req, res);
     }
 
     @PostMapping("/signup")
