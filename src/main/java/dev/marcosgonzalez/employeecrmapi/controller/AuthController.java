@@ -31,7 +31,7 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public AuthResponse signup(@RequestBody @Valid SignupBody body) {
-        return authService.signup(body);
+    public AuthResponse signup(@RequestBody @Valid SignupBody body, HttpServletRequest req, HttpServletResponse res) {
+        return authService.signup(body, req, res);
     }
 }

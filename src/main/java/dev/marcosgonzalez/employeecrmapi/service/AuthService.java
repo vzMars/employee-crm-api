@@ -64,16 +64,16 @@ public class AuthService {
         return new AuthResponse(userInfo);
     }
 
-    public AuthResponse signup(SignupBody body) {
+    public AuthResponse signup(SignupBody body, HttpServletRequest req, HttpServletResponse res) {
         if (userRepository.existsByUsernameOrEmail(body.getUsername(), body.getEmail())) {
             throw new DuplicateUserException("The username or email has already been taken.");
         }
 
         User user = new User(body.getUsername(), body.getEmail(), passwordEncoder.encode(body.getPassword()));
 
-        User savedUser = userRepository.save(user);
-        UserInfo userInfo = new UserInfo(savedUser.getId(), savedUser.getEmail(), savedUser.getUsername());
+        userRepository.save(user);
+        LoginBody loginBody = new LoginBody(body.getUsername(), body.getPassword());
 
-        return new AuthResponse(userInfo);
+        return login(loginBody, req, res);
     }
 }
