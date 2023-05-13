@@ -15,4 +15,10 @@ public class GlobalExceptionHandler {
         ErrorMsgResponse error = new ErrorMsgResponse(ex.getBindingResult().getAllErrors().get(0).getDefaultMessage());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(DuplicateUserException.class)
+    public ResponseEntity<ErrorMsgResponse> duplicateUserErrors(DuplicateUserException ex) {
+        ErrorMsgResponse error = new ErrorMsgResponse(ex.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.CONFLICT);
+    }
 }
