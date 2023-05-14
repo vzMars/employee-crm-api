@@ -28,4 +28,16 @@ public class GlobalExceptionHandler {
         ErrorMsgResponse error = new ErrorMsgResponse("Incorrect username or password.");
         return new ResponseEntity<>(error, HttpStatus.UNAUTHORIZED);
     }
+
+    @ExceptionHandler(InvalidMongoIdException.class)
+    public ResponseEntity<ErrorMsgResponse> invalidMongoIdErrors(InvalidMongoIdException ex) {
+        ErrorMsgResponse error = new ErrorMsgResponse(ex.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EmployeeNotFoundException.class)
+    public ResponseEntity<ErrorMsgResponse> employeeNotFoundErrors(EmployeeNotFoundException ex) {
+        ErrorMsgResponse error = new ErrorMsgResponse(ex.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
 }
