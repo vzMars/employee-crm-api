@@ -40,7 +40,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/{id}")
-    public String deleteEmployee(@PathVariable String id) {
-        return "DELETE employee: " + id;
+    public String deleteEmployee(@PathVariable String id, Authentication authentication) {
+        return employeeService.deleteEmployee(id, authentication);
     }
 }

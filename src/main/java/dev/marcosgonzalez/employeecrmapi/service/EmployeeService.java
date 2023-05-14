@@ -75,4 +75,22 @@ public class EmployeeService {
 
         return employeeRepository.save(employee.get());
     }
+
+    public String deleteEmployee(String id, Authentication authentication) {
+        User user = (User) authentication.getPrincipal();
+
+        if (!ObjectId.isValid(id)) {
+            throw new InvalidMongoIdException("Invalid MongoDB ID.");
+        }
+
+        Optional<Employee> employee = employeeRepository.findById(id);
+
+        if (employee.isEmpty() || !employee.get().getUserId().equals(user.getId())) {
+            throw new EmployeeNotFoundException("Employee not found.");
+        }
+
+        employeeRepository.delete(employee.get());
+
+        return id;
+    }
 }
