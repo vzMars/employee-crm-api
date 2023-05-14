@@ -17,11 +17,9 @@ public class Employee {
     private String zipcode;
     private String jobTitle;
     private Status status;
+    private String userId;
 
-    @DocumentReference
-    private User userId;
-
-    public Employee(String name, String address, String city, String state, String zipcode, String jobTitle, Status status, User userId) {
+    public Employee(String name, String address, String city, String state, String zipcode, String jobTitle, Status status, String userId) {
         this.name = name;
         this.address = address;
         this.city = city;
@@ -64,7 +62,7 @@ public class Employee {
         return this.status;
     }
 
-    public User getUserId() {
-        return userId;
+    public String getUserId() {
+        return this.userId;
     }
 }

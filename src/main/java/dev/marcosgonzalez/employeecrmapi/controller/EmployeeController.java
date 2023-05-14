@@ -1,10 +1,21 @@
 package dev.marcosgonzalez.employeecrmapi.controller;
 
+import dev.marcosgonzalez.employeecrmapi.dto.CreateEmployeeBody;
+import dev.marcosgonzalez.employeecrmapi.model.Employee;
+import dev.marcosgonzalez.employeecrmapi.service.EmployeeService;
+import jakarta.validation.Valid;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
+
+    private final EmployeeService employeeService;
+
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
     @GetMapping
     public String getEmployees() {
@@ -17,8 +28,8 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public String createEmployee() {
-        return "CREATE new employee";
+    public Employee createEmployee(@RequestBody @Valid CreateEmployeeBody body, Authentication authentication) {
+        return employeeService.createEmployee(body, authentication);
     }
 
     @PutMapping("/{id}")
