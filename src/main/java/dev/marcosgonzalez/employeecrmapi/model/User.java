@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-@Document(collation = "users")
+@Document(collection = "users")
 public class User implements UserDetails {
 
     @Id
