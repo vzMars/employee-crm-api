@@ -7,6 +7,8 @@ import jakarta.validation.Valid;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
@@ -18,8 +20,8 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public String getEmployees() {
-        return "GET employees";
+    public List<Employee> getEmployees(Authentication authentication) {
+        return employeeService.getEmployees(authentication);
     }
 
     @GetMapping("/{id}")

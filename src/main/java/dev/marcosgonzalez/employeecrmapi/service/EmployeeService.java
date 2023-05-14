@@ -7,6 +7,8 @@ import dev.marcosgonzalez.employeecrmapi.repository.EmployeeRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmployeeService {
 
@@ -14,6 +16,11 @@ public class EmployeeService {
 
     public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
+    }
+
+    public List<Employee> getEmployees(Authentication authentication) {
+        User user = (User) authentication.getPrincipal();
+        return employeeRepository.findEmployeesByUserId(user.getId());
     }
 
     public Employee createEmployee(CreateEmployeeBody body, Authentication authentication) {
