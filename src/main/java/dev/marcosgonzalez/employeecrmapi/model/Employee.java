@@ -65,4 +65,8 @@ public class Employee {
     public String getUserId() {
         return this.userId;
     }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 }

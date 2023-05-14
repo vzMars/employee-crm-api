@@ -4,6 +4,7 @@ import dev.marcosgonzalez.employeecrmapi.dto.CreateEmployeeBody;
 import dev.marcosgonzalez.employeecrmapi.exception.EmployeeNotFoundException;
 import dev.marcosgonzalez.employeecrmapi.exception.InvalidMongoIdException;
 import dev.marcosgonzalez.employeecrmapi.model.Employee;
+import dev.marcosgonzalez.employeecrmapi.model.Status;
 import dev.marcosgonzalez.employeecrmapi.model.User;
 import dev.marcosgonzalez.employeecrmapi.repository.EmployeeRepository;
 import org.bson.types.ObjectId;
@@ -49,5 +50,29 @@ public class EmployeeService {
                 body.getZipcode(), body.getJobTitle(), body.getStatus(), user.getId());
 
         return employeeRepository.save(employee);
+    }
+
+    public Employee updateEmployeeStatus(String id, Authentication authentication) {
+        User user = (User) authentication.getPrincipal();
+
+        if (!ObjectId.isValid(id)) {
+            throw new InvalidMongoIdException("Invalid MongoDB ID.");
+        }
+
+        Optional<Employee> employee = employeeRepository.findById(id);
+
+        if (employee.isEmpty() || !employee.get().getUserId().equals(user.getId())) {
+            throw new EmployeeNotFoundException("Employee not found.");
+        }
+
+        Status status = employee.get().getStatus();
+
+        if (status.equals(Status.ACTIVE)) {
+            employee.get().setStatus(Status.INACTIVE);
+        } else {
+            employee.get().setStatus(Status.ACTIVE);
+        }
+
+        return employeeRepository.save(employee.get());
     }
 }
