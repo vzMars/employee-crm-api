@@ -25,8 +25,8 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public String getEmployee(@PathVariable String id) {
-        return "GET employee: " + id;
+    public Employee getEmployee(@PathVariable String id, Authentication authentication) {
+        return employeeService.getEmployee(id, authentication);
     }
 
     @PostMapping
