@@ -76,7 +76,7 @@ public class EmployeeService {
         return employeeRepository.save(employee.get());
     }
 
-    public String deleteEmployee(String id, Authentication authentication) {
+    public void deleteEmployee(String id, Authentication authentication) {
         User user = (User) authentication.getPrincipal();
 
         if (!ObjectId.isValid(id)) {
@@ -90,7 +90,5 @@ public class EmployeeService {
         }
 
         employeeRepository.delete(employee.get());
-
-        return id;
     }
 }
