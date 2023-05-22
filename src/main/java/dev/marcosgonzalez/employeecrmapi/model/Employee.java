@@ -2,7 +2,6 @@ package dev.marcosgonzalez.employeecrmapi.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 @Document(collection = "employees")
 public class Employee {
