@@ -32,6 +32,6 @@ Take a look at these other projects that I have in my portfolio:
 
 **GameBlog API:** https://github.com/vzMars/gameblog-api
 
-**MyBootList API:** https://github.com/vzMars/gameblog-api
+**MyBookList API:** https://github.com/vzMars/mybooklist-api
 
 **MangaNotifications:** https://github.com/vzMars/manga-notifications
