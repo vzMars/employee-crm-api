@@ -19,13 +19,12 @@ Spring Security is used to help secure the application. The SecurityFilterChain 
 I have also added a global exception handler that can handle validation errors when the user signs up, when the user logs in, and when a user tries to add an employee to the database. The global exception handler can also handle custom exceptions that I have created such as when an invalid MongoDB id is provided, when an employee isn't found in the database, and when a user tries to sign up with a username that already exists in the database.
 
 I have created an AuthService that is injected as a dependency into the AuthController and has methods for checking the authentication status which either sends a response with the current user or null, logging a user into the application and registering a new user. There is also an EmployeeService that is injected as a dependency into the EmployeeController and has methods for creating new employees, getting all employees that belong to the current user, getting a single employee that belongs to the current user, updating the status of an employee and deleting an employee.
+
 ## Optimizations:
-
-
+I would like to try switching the database of this application from MongoDB to PostgreSQL to get more experience with using relational databases.
 
 ## Lessons Learned:
-
-
+I learned how to create a secure Rest API using Java and Spring Boot and how to get it working with the front-end that was made using React. I also found data transfer objects (DTOs) to be really useful for validating what was sent by the client in the request body. DTOs were also really useful for making sure when the API sends a response back to the client no sensitive information is sent for example I created a UserInfo DTO that sends over JSON that has everything related to the user but with the password being removed.
 
 ## More Projects:
 
