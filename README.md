@@ -6,7 +6,7 @@ The back-end for a full-stack employee manager application that allows companies
 
 **Front-End:** https://github.com/vzMars/employee-manager
 
-![alt text](https://i.imgur.com/fgPhylk.png)
+![alt text](https://i.imgur.com/dRCkzJk.png)
 
 ## How It's Made:
 
