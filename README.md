@@ -1,6 +1,6 @@
-# Employee CRM API
+# Employee Manager API
 
-The back-end for a full-stack crm application that allows companies to keep track of their employees.
+The back-end for a full-stack employee manager application that allows companies to keep track of their employees.
 
 **Link to project:** https://employeemanager.vzmars.com
 
