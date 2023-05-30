@@ -2,9 +2,9 @@
 
 The back-end for a full-stack crm application that allows companies to keep track of their employees.
 
-**Link to project:** https://employeecrm.vzmars.com/
+**Link to project:** https://employeemanager.vzmars.com
 
-**Front-End:** https://github.com/vzMars/employee-crm
+**Front-End:** https://github.com/vzMars/employee-manager
 
 ![alt text](https://i.imgur.com/fgPhylk.png)
 
